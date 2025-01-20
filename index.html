@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персональные тренировки</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="home-page">
+    <header>
+        <nav>
+            <div class="logo">FitProgram</div>
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#quiz">Подобрать программу</a></li>
+                <li><a href="#about">О нас</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h1>Подберите идеальную программу тренировок</h1>
+            <p>Ответьте на несколько вопросов и получите персональный план тренировок</p>
+            
+            <button onclick="startQuiz()">Начать подбор</button>
+        </section>
+
+        <div class="program-description">
+            <p><strong>Программа рассчитана на набор мышечной массы.</strong> Тренировки проходят по сплит-системе (разные мышечные группы тренируются в разные дни). Она отлично подойдет как для новичков, так и для людей с опытом. Как для прогресси в нагрузках, так и поддержания формы.</p>
+            
+            <p><strong>Длительность программы — 10 недель.</strong> Программа подойдет как для девушек, так и для мужчин. Для тренировок достаточно минимального количества спортивного инвентаря тренажерных залов: <strong>штанги, гантели, блочные тренажеры, беговые дорожки</strong>.</p>
+        </div>
+
+        <section id="quiz" class="hidden">
+            <div class="quiz-container">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="quiz-form">
+                    <!-- Шаг 1: Основные цели -->
+                    <div class="quiz-step" data-step="1">
+                        <h3>Выберите вашу основную цель</h3>
+                        <div class="options-grid">
+                            <div class="option-card" data-value="weightLoss">
+                                <i class="fas fa-weight fa-3x"></i>
+                                <h4>Похудение</h4>
+                                <p>Снижение веса и процента жира</p>
+                            </div>
+                            <div class="option-card" data-value="muscleGain">
+                                <i class="fas fa-dumbbell fa-3x"></i>
+                                <h4>Набор массы</h4>
+                                <p>Увеличение мышечной массы и силы</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Шаг 2: Уровень подготовки -->
+                    <div class="quiz-step hidden" data-step="2">
+                        <h3>Ваш уровень подготовки</h3>
+                        <div class="options-grid">
+                            <div class="option-card" data-value="beginner">
+                                <i class="fas fa-walking fa-3x"></i>
+                                <h4>Начинающий</h4>
+                                <p>Нет опыта тренировок или тренируюсь нерегулярно</p>
+                            </div>
+                            <div class="option-card" data-value="advanced">
+                                <i class="fas fa-running fa-3x"></i>
+                                <h4>Продвинутый</h4>
+                                <p>Есть опыт тренировок, знаю технику упражнений</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Шаг 3: Ограничения -->
+                    <div class="quiz-step hidden" data-step="3">
+                        <h3>Есть ли у вас ограничения?</h3>
+                        <div class="options-grid">
+                            <div class="option-card" data-value="none">
+                                <h4>Нет ограничений</h4>
+                                <p>Могу выполнять любые упражнения</p>
+                            </div>
+                            <div class="option-card" data-value="back">
+                                <h4>Проблемы со спиной</h4>
+                                <p>Требуются щадящие упражнения для спины</p>
+                            </div>
+                            <div class="option-card" data-value="joints">
+                                <h4>Проблемы с суставами</h4>
+                                <p>Требуются щадящие упражнения для суставов</p>
+                            </div>
+                            <div class="option-card" data-value="cardio">
+                                <h4>Ограничения по кардио</h4>
+                                <p>Требуются упражнения с низкой интенсивностью</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Шаг 4: Время на тренировки -->
+                    <div class="quiz-step hidden" data-step="4">
+                        <h3>Сколько времени вы готовы уделять тренировкам?</h3>
+                        <div class="options-grid">
+                            <div class="option-card" data-value="minimal">
+                                <i class="fas fa-clock fa-3x"></i>
+                                <h4>Минимум</h4>
+                                <p>2-3 раза в неделю по 60 минут</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-buttons">
+                    <button id="prevBtn" onclick="previousStep()" class="hidden">Назад</button>
+                    <button id="nextBtn" onclick="nextStep()">Далее</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="hidden">
+            <div class="about-container">
+                <h2>О нас</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>FitProgram - это инновационная платформа для создания персонализированных программ тренировок. Мы помогаем людям достигать их фитнес-целей, предоставляя индивидуальный подход к тренировкам.</p>
+                        
+                        <h3>Наши преимущества:</h3>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Индивидуальный подход к каждому</li>
+                            <li><i class="fas fa-check"></i> Учет ваших целей и ограничений</li>
+                            <li><i class="fas fa-check"></i> Профессионально составленные программы</li>
+                            <li><i class="fas fa-check"></i> Регулярные обновления программ</li>
+                        </ul>
+                        
+                        <h3>Наша миссия</h3>
+                        <p>Сделать фитнес доступным и эффективным для каждого, независимо от уровня подготовки и опыта.</p>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Свяжитесь с нами</h3>
+                        <p><i class="fas fa-envelope"></i> Email: fitprogram@mail.ru </p>
+                        <p><i class="fas fa-phone"></i> Телефон: +7 (917) 169-70-64</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Адрес: г. Самара, ул. Пушкина дом алатушкина</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="hidden">
+            <!-- Здесь будет отображаться программа тренировок -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 FitProgram. Все права защищены.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
